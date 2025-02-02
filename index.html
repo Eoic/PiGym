@@ -8,21 +8,36 @@
     <title> PiGym </title>
   </head>
   <body>
-    <div x-data>
-      <template x-route="/">
-        <nav>
-          <a href="/challenge"> Challenge </a>
-          <a href="/practice"> Practice </a>
-          <a href="/scores"> Scores </a>
-          <a href="/statistics"> Statistics </a>
-          <a href="/settings"> Settings </a>
-        </nav>
-      </template>
+    <header>
+      <div class="brand-icon">
+        PiGym
+      </div>
+  </header>
+  <main x-data>
+      <nav>
+          <ul>
+              <template x-for="route in $store.routes.items">
+                <li><a x-text="route" :href="`/${route}`" :class="$router.route === `/${route}` && 'active'"></a></li>
+              </template>
+          </ul>
+      </nav>
 
-      <template x-route="/challenge">
+      <div class="content">
+        <template x-route="/" x-handler="[(context) => context.redirect('/challenge')]"></template>
+
+        <template x-route="/challenge">
           <p> Challenge page. </p>
-      </template>
-    </div>
+        </template>
+
+        <template x-route="/practice">
+          <p> Practice page. </p>
+        </template>
+
+        <template x-route="notfound">
+          <p> Page not found. </p>
+        </template>
+      </div>
+    </main>
 
     <script type="module" src="/src/main.ts"></script>
   </body>
