@@ -5,10 +5,25 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PiGym</title>
+    <title> PiGym </title>
   </head>
   <body>
-    <h1>It works!</h1>
+    <div x-data>
+      <template x-route="/">
+        <nav>
+          <a href="/challenge"> Challenge </a>
+          <a href="/practice"> Practice </a>
+          <a href="/scores"> Scores </a>
+          <a href="/statistics"> Statistics </a>
+          <a href="/settings"> Settings </a>
+        </nav>
+      </template>
+
+      <template x-route="/challenge">
+          <p> Challenge page. </p>
+      </template>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

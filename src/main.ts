@@ -1,3 +1,7 @@
 import '../styles/main.scss';
+import Alpine from 'alpinejs';
+import PineconeRouter from 'pinecone-router';
 
-console.log('It works!');
+window.Alpine = Alpine;
+Alpine.plugin(PineconeRouter);
+Alpine.start();
