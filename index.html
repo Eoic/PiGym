@@ -1,43 +1,149 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Madimi+One&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> PiGym </title>
   </head>
-  <body>
-    <header>
-      <div class="brand-icon">
-        PiGym
-      </div>
-  </header>
-  <main x-data>
-      <nav>
-          <ul>
-              <template x-for="route in $store.routes.items">
-                <li><a x-text="route" :href="`/${route}`" :class="$router.route === `/${route}` && 'active'"></a></li>
-              </template>
-          </ul>
-      </nav>
+  <body class="light">
+    <main x-data>
+        <nav>
+            <div class="brand">
+              <span class="icon icon-brand">  </span>
+              <span class="text madimi-one-regular"> PiGym </span>
+            </div>
+            <ul>
+                <template x-for="route in $store.routes.items">
+                  <li>
+                    <a :href="`/${route.path}`" :class="$router.route === `/${route.path}` && 'active'">
+                      <span :class="`icon icon-${route.icon}`"></span>
+                      <span x-text="route.name"></span>
+                    </a>
+                  </li>
+                </template>
+            </ul>
+        </nav>
 
-      <div class="content">
-        <template x-route="/" x-handler="[(context) => context.redirect('/challenge')]"></template>
+        <div class="content">
+          <template x-route="/">
+            <p> Challenge page. </p>
+          </template>
 
-        <template x-route="/challenge">
-          <p> Challenge page. </p>
-        </template>
+          <template x-route="/practice">
+            <div>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+            <p> Practice page. </p>
+          </div>
+          </template>
 
-        <template x-route="/practice">
-          <p> Practice page. </p>
-        </template>
-
-        <template x-route="notfound">
-          <p> Page not found. </p>
-        </template>
-      </div>
-    </main>
+          <template x-route="notfound">
+            <p> Page not found. </p>
+          </template>
+        </div>
+      </main>
 
     <script type="module" src="/src/main.ts"></script>
   </body>

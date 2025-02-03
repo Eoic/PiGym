@@ -1,0 +1,10 @@
+@use "mixins";
+@use "variables";
+
+:root.light {
+    @include mixins.spread-map(variables.$theme-map-light);
+}
+
+:root.dark {
+    @include mixins.spread-map(variables.$theme-map-dark);
+}

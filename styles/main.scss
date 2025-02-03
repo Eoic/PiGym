@@ -1,4 +1,9 @@
-@use '_reset';
+@use "reset";
+@use "icons";
+@use "themes";
+@use "variables";
+@use "functions";
+@use "fonts";
 
 body {
     margin: 0;
@@ -8,7 +13,15 @@ body {
     overflow: hidden;
     font-size: 16px;
     color: #dadada;
-    background-color: #272425;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: functions.theme-var(variables.$theme-primary);
+    font-family: "Fira Code", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
 }
 
 a.active {
@@ -21,46 +34,47 @@ a.active {
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-header {
-    z-index: 1;
-    background: #333;
-    color: white;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-}
-
-.brand-icon {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
 main {
-    flex: 1;
+    height: 100%;
     display: flex;
 }
 
 nav {
-    width: 250px;
-    background: #444;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 260px;
     color: white;
-    padding: 1rem;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
+    border-right: 1px solid functions.theme-var(variables.$theme-border);
+    background-color: functions.theme-var(variables.$theme-secondary);
+
+    .brand {
+        width: inherit;
+        align-items: center;
+        justify-content: center;
+        display: inline-flex;
+        column-gap: 0.5em;
+        padding-block: 0.85em;
+        border-bottom: 1px solid functions.theme-var(variables.$theme-border);
+
+        .icon {
+            width: 2.1875em;
+            height: 2.1875em;
+        }
+
+        .text {
+            font-size: 2em;
+        }
+    }
 }
 
 nav ul {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     list-style: none;
-    padding-top: 60px;
+    overflow: auto;
 }
 
 nav ul li {
@@ -76,6 +90,6 @@ nav ul li a {
 
 .content {
     flex: 1;
-    padding: 2rem;
-    margin-left: 250px;
+    width: 100%;
+    overflow: auto;
 }

@@ -7,11 +7,23 @@ Alpine.plugin(PineconeRouter);
 
 Alpine.store('routes', {
     items: [
-        'challenge',
-        'practice',
-        'scores',
-        'statistics',
-        'settings'
+        { path: '', name: 'Challenge', icon: 'challenge', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', },
+        { path: 'practice', name: 'Practice', icon: 'practice', }
     ],
 });
 
