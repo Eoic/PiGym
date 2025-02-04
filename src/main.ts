@@ -9,21 +9,8 @@ Alpine.store('routes', {
     items: [
         { path: '', name: 'Challenge', icon: 'challenge', },
         { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', },
-        { path: 'practice', name: 'Practice', icon: 'practice', }
+        { path: 'statistics', name: 'Statistics', icon: 'statistics', },
+        { path: 'settings', name: 'Settings', icon: 'settings', }
     ],
 });
 
