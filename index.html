@@ -10,141 +10,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> PiGym </title>
   </head>
-  <body class="light">
-    <main x-data>
-        <nav>
-            <div class="brand">
-              <span class="icon icon-brand">  </span>
-              <span class="text madimi-one-regular"> PiGym </span>
-            </div>
-            <ul>
-                <template x-for="route in $store.routes.items">
-                  <li>
-                    <a :href="`/${route.path}`" :class="$router.route === `/${route.path}` && 'active'">
-                      <span :class="`icon icon-${route.icon}`"></span>
-                      <span x-text="route.name"></span>
-                    </a>
-                  </li>
-                </template>
-            </ul>
-        </nav>
+  <body class="light" x-data>
+    <header>
+      <div class="brand">
+        <span class="icon icon-brand">  </span>
+        <span class="text madimi-one-regular"> PiGym </span>
+      </div>
+      <label for="hamburger">
+        <span class="icon icon-hamburger"></span>
+        <input id="hamburger" type="checkbox" role="button">
+      </label>
+    </header>
+  
+    <nav>
+        <ul>
+            <template x-for="route in $store.routes.items">
+              <li>
+                <a :href="`/${route.path}`" :class="$router.route === `/${route.path}` && 'active'">
+                  <span :class="`icon icon-${route.icon}`"></span>
+                  <span x-text="route.name"></span>
+                </a>
+              </li>
+            </template>
+        </ul>
+    </nav>
 
-        <div class="content">
-          <template x-route="/">
-            <p> Challenge page. </p>
-          </template>
+    <main>
+      <div class="content">
+        <template x-route="/">
+          <p> Challenge page. </p>
+        </template>
 
-          <template x-route="/practice">
-            <div>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-            <p> Practice page. </p>
-          </div>
-          </template>
-
-          <template x-route="notfound">
-            <p> Page not found. </p>
-          </template>
+        <template x-route="/practice">
+          <div>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
+          <p> Practice page. </p>
         </div>
-      </main>
+        </template>
 
+        <template x-route="notfound">
+          <p> Page not found. </p>
+        </template>
+      </div>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
