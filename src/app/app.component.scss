@@ -1,0 +1,15 @@
+:host {
+    display: grid;
+    grid-template-rows: min-content auto;
+    grid-template-columns: min-content auto;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 16px;
+    color: #dadada;
+    font-family: "Fira Code", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    height: inherit;
+}

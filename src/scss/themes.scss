@@ -1,0 +1,20 @@
+@use "mixins";
+@use "variables";
+
+:root {
+    @media (prefers-color-scheme: light) {
+        @include mixins.spread-map(variables.$theme-map-light);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        @include mixins.spread-map(variables.$theme-map-dark);
+    }
+
+    &.light {
+        @include mixins.spread-map(variables.$theme-map-light);
+    }
+
+    &.dark {
+        @include mixins.spread-map(variables.$theme-map-dark);
+    }
+}

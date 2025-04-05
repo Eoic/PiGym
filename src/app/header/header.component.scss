@@ -1,0 +1,53 @@
+@use "sass:color";
+
+:host {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    display: inline-flex;
+    align-content: center;
+    align-items: center;
+    // border-bottom: 1px solid functions.theme-var(variables.$theme-border);
+    // background-color: functions.theme-var(variables.$theme-secondary);
+
+    label {
+        width: 1.5em;
+        height: 1.5em;
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 0.85em;
+
+        .icon {
+            width: 100%;
+            height: 100%;
+        }
+
+        input {
+            display: none;
+        }
+
+        &:hover .icon {
+            background-color: color.scale(#fff, $lightness: -25%);
+        }
+    }
+
+    .brand {
+        // width: $sidebar-width;
+        width: 250px    ;
+        display: inline-flex;
+        column-gap: 0.5em;
+        padding-block: 0.85em;
+        padding-inline: 4em;
+        // border-right: 1px solid functions.theme-var(variables.$theme-border);
+
+        .icon {
+            width: 2.1875em;
+            height: 2.1875em;
+        }
+
+        .text {
+            font-size: 2em;
+        }
+    }
+}

@@ -1,0 +1,80 @@
+@use "reset";
+@use "icons";
+@use "themes";
+@use "variables";
+@use "functions";
+@use "fonts";
+@use "sass:color";
+
+$sidebar-width: 260px;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: functions.theme-var(variables.$theme-primary);
+}
+
+main {
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-row-end: -2;
+    grid-column-end: 4;
+    overflow: auto;
+    padding: 4rem;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+    height: inherit;
+    flex-wrap: wrap;
+    color: white;
+    width: $sidebar-width;
+    border-right: 1px solid functions.theme-var(variables.$theme-border);
+    background-color: functions.theme-var(variables.$theme-secondary);
+
+    ul {
+        padding-block: 1em;
+        width: 100%;
+        overflow: auto;
+        padding-right: 1px;
+        align-self: center;
+
+        li {
+            font-size: 1.2rem;
+
+            a {
+                display: block;
+                text-decoration: none;
+                line-height: 2em;
+                padding-inline: 1.75em;
+                color: functions.theme-var(variables.$theme-on-secondary);
+
+                &.active {
+                    background-color: functions.theme-var(variables.$theme-on-secondary-active);
+                }
+
+                &:hover {
+                    background-color: functions.theme-var(variables.$theme-on-secondary-hover);
+                }
+
+                span {
+                    display: inline-block;
+                    vertical-align: middle;
+
+                    &.icon {
+                        width: 1em;
+                        height: 1em;
+                    }
+                }
+            }
+        }
+    }
+}

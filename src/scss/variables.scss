@@ -1,0 +1,30 @@
+$theme-primary: --theme-primary;
+$theme-secondary: --theme-secondary;
+$theme-on-primary: --theme-on-primary;
+$theme-on-secondary: --theme-on-secondary;
+$theme-on-secondary-active: --theme-on-secondary-active;
+$theme-on-secondary-hover: --theme-on-secondary-hover;
+$theme-border: --theme-border;
+$theme-on-secondary-icon: --theme-on-secondary-icon;
+
+$theme-map-light: (
+    $theme-primary: #a1afbb,
+    $theme-secondary: #2c3741,
+    $theme-on-primary: #ffffff,
+    $theme-on-secondary: #dddddd,
+    $theme-on-secondary-active: #3c566c,
+    $theme-on-secondary-hover: #344451,
+    $theme-border: #445d71,
+    $theme-on-secondary-icon: #ddd
+);
+
+$theme-map-dark: (
+    $theme-primary: #273139,
+    $theme-secondary: #2c3741,
+    $theme-on-primary: #ffffff,
+    $theme-on-secondary: #dddddd,
+    $theme-on-secondary-active: #3a4853,
+    $theme-on-secondary-hover: #344451,
+    $theme-border: #445d71,
+    $theme-on-secondary-icon: #ddd
+);
