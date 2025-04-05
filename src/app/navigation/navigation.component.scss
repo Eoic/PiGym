@@ -1,0 +1,55 @@
+@use "functions";
+@use "variables";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+    height: 100%;
+    flex-wrap: wrap;
+    color: white;
+    width: variables.$sidebar-width-expanded;
+    border-right: 1px solid functions.theme-var(variables.$theme-border);
+    background-color: functions.theme-var(variables.$theme-secondary);
+
+    ul {
+        padding-block: 1em;
+        width: 100%;
+        overflow: auto;
+        padding-right: 1px;
+        align-self: center;
+
+        li {
+            font-size: 1.2rem;
+
+            a {
+                display: block;
+                cursor: pointer;
+                text-decoration: none;
+                line-height: 2em;
+                padding-inline: 1.75em;
+                color: functions.theme-var(variables.$theme-on-secondary);
+
+                &.active {
+                    background-color: functions.theme-var(variables.$theme-on-secondary-active);
+                }
+
+                &:hover {
+                    background-color: functions.theme-var(variables.$theme-on-secondary-hover);
+                }
+
+                span {
+                    display: inline-block;
+                    vertical-align: middle;
+
+                    &.icon {
+                        width: 1em;
+                        height: 1em;
+                        margin-right: 0.5em;
+                    }
+                }
+            }
+        }
+    }
+}

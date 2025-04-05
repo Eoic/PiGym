@@ -1,4 +1,6 @@
 @use "sass:color";
+@use "functions";
+@use "variables";
 
 :host {
     grid-column-start: 1;
@@ -8,8 +10,6 @@
     display: inline-flex;
     align-content: center;
     align-items: center;
-    // border-bottom: 1px solid functions.theme-var(variables.$theme-border);
-    // background-color: functions.theme-var(variables.$theme-secondary);
 
     label {
         width: 1.5em;
@@ -33,13 +33,13 @@
     }
 
     .brand {
-        // width: $sidebar-width;
-        width: 250px    ;
         display: inline-flex;
         column-gap: 0.5em;
         padding-block: 0.85em;
         padding-inline: 4em;
-        // border-right: 1px solid functions.theme-var(variables.$theme-border);
+        border-right: 1px solid functions.theme-var(variables.$theme-border);
+        border-bottom: 1px solid functions.theme-var(variables.$theme-border);
+        background-color: functions.theme-var(variables.$theme-secondary);
 
         .icon {
             width: 2.1875em;

@@ -1,0 +1,12 @@
+<nav>
+    <ul>
+        @for (link of links; track link) {
+            <li> 
+                <a routerLink="/{{ link.route }}" routerLinkActive="active" ariaCurrentWhenActive="page">
+                    <span class="icon icon-{{ link.icon }}"></span>
+                    <span> {{ link.label }} </span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
