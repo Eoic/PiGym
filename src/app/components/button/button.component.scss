@@ -10,5 +10,18 @@ button {
     cursor: pointer;
 
     &.primary {
+        background-color: cyan;
+    }
+
+    &.success {
+        background-color: greenyellow;
+    }
+
+    &.alert {
+        background-color: orange;
+    }
+
+    &.danger {
+        background-color: crimson;
     }
 }

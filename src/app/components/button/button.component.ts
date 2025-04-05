@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() type: string = 'button';
-  @Input() isLoadin: boolean = false;
+  @Input() isLoading: boolean = false;
   @Input() isDisabled: boolean = false;
   @Input() loadingText: string = 'Loading...';
   @Input() variant: 'primary' | 'success' | 'alert' | 'danger' = 'primary';

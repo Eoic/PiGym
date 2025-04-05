@@ -1,1 +1,11 @@
-<p>new-challenge works!</p>
+<form [formGroup]="challengeForm" (ngSubmit)="onSubmit()">
+    <label for="hintsAllowed">Hints allowed</label>
+    <input id="hintsAllowed" type="number" formControlName="hintsAllowed">
+
+    <app-button
+        [variant]="'alert'"
+        [isDisabled]="!challengeForm.valid"
+        type="submit">
+        Submit
+    </app-button>
+</form>
