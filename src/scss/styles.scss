@@ -13,11 +13,11 @@
 
 body {
     height: 100vh;
-    background-color: functions.theme-var(variables.$theme-primary);
-    font-family: "Fira Code", monospace;
-    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    font-optical-sizing: auto;
+    font-family: "Fira Code", monospace;
+    background-color: var(--primary);
 }
 
 main {

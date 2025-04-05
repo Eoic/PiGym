@@ -1,32 +1,32 @@
-$theme-primary: --theme-primary;
-$theme-secondary: --theme-secondary;
-$theme-on-primary: --theme-on-primary;
-$theme-on-secondary: --theme-on-secondary;
-$theme-on-secondary-active: --theme-on-secondary-active;
-$theme-on-secondary-hover: --theme-on-secondary-hover;
-$theme-border: --theme-border;
-$theme-on-secondary-icon: --theme-on-secondary-icon;
+$border: --border;
+$primary: --primary;
+$secondary: --secondary;
+$on-primary: --on-primary;
+$on-secondary: --on-secondary;
+$on-secondary-active: --on-secondary-active;
+$on-secondary-hover: --on-secondary-hover;
+$on-secondary-icon: --on-secondary-icon;
 
 $theme-map-light: (
-    $theme-primary: #a1afbb,
-    $theme-secondary: #2c3741,
-    $theme-on-primary: #ffffff,
-    $theme-on-secondary: #dddddd,
-    $theme-on-secondary-active: #3c566c,
-    $theme-on-secondary-hover: #344451,
-    $theme-border: #445d71,
-    $theme-on-secondary-icon: #ddd
+    $border: #445d71,
+    $primary: #a1afbb,
+    $secondary: #2c3741,
+    $on-primary: #ffffff,
+    $on-secondary: #dddddd,
+    $on-secondary-active: #3c566c,
+    $on-secondary-hover: #344451,
+    $on-secondary-icon: #ddd
 );
 
 $theme-map-dark: (
-    $theme-primary: #273139,
-    $theme-secondary: #2c3741,
-    $theme-on-primary: #ffffff,
-    $theme-on-secondary: #dddddd,
-    $theme-on-secondary-active: #3a4853,
-    $theme-on-secondary-hover: #344451,
-    $theme-border: #445d71,
-    $theme-on-secondary-icon: #ddd
+    $border: #445d71,
+    $primary: #273139,
+    $secondary: #2c3741,
+    $on-primary: #ffffff,
+    $on-secondary: #dddddd,
+    $on-secondary-active: #3a4853,
+    $on-secondary-hover: #344451,
+    $on-secondary-icon: #ddd
 );
 
 $sidebar-width-expanded: 260px;

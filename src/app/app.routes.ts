@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { ChallengeComponent } from './challenge/challenge.component';
-import { PracticeComponent } from './practice/practice.component';
-import { ScoresComponent } from './scores/scores.component';
-import { StatisticsComponent } from './statistics/statistics.component';
-import { SettingsComponent } from './settings/settings.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ChallengeComponent } from './pages/challenge/challenge.component';
+import { PracticeComponent } from './pages/practice/practice.component';
+import { ScoresComponent } from './pages/scores/scores.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   {

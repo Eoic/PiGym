@@ -2,15 +2,15 @@
 @use "functions";
 @use "variables";
 
-$icons: "challenge", "practice", "settings", "statistics", "brand", "hamburger";
 $extension: ".svg";
 $root-path: "/assets/icons/";
+$icons: "challenge", "practice", "settings", "statistics", "brand", "hamburger";
 
 span.icon {
     position: relative;
     pointer-events: none;
     display: inline-block;
-    background-color: functions.theme-var(variables.$theme-on-secondary-icon);
+    background-color: var(--on-secondary-icon);
     @include mixins.mask-background(100%, 100%);
     @include mixins.generate-icons($icons, $root-path, $extension);
 }

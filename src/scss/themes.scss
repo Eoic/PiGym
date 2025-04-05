@@ -3,18 +3,26 @@
 
 :root {
     @media (prefers-color-scheme: light) {
+        color-scheme: light;
         @include mixins.spread-map(variables.$theme-map-light);
     }
 
     @media (prefers-color-scheme: dark) {
+        color-scheme: dark;
         @include mixins.spread-map(variables.$theme-map-dark);
     }
+}
 
-    &.light {
-        @include mixins.spread-map(variables.$theme-map-light);
-    }
+body {
+    &.theme {
+        &.light {
+            color-scheme: light;
+            @include mixins.spread-map(variables.$theme-map-light);
+        }
 
-    &.dark {
-        @include mixins.spread-map(variables.$theme-map-dark);
+        &.dark {
+            color-scheme: dark;
+            @include mixins.spread-map(variables.$theme-map-dark);
+        }
     }
 }

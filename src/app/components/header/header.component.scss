@@ -1,12 +1,10 @@
 @use "sass:color";
-@use "functions";
-@use "variables";
 
 :host {
-    grid-column-start: 1;
-    grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 4;
     display: inline-flex;
     align-content: center;
     align-items: center;
@@ -37,9 +35,10 @@
         column-gap: 0.5em;
         padding-block: 0.85em;
         padding-inline: 4em;
-        border-right: 1px solid functions.theme-var(variables.$theme-border);
-        border-bottom: 1px solid functions.theme-var(variables.$theme-border);
-        background-color: functions.theme-var(variables.$theme-secondary);
+        border-width: 0 1px 1px 0;
+        border-style: solid;
+        border-color: var(--border);
+        background-color: var(--secondary);
 
         .icon {
             width: 2.1875em;
