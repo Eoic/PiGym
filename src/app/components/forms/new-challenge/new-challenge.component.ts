@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ButtonComponent } from '../../button/button.component';
+import { FormComponent } from '../form/form.component';
 
 @Component({
   selector: 'app-new-challenge',
@@ -8,7 +9,7 @@ import { ButtonComponent } from '../../button/button.component';
   templateUrl: './new-challenge.component.html',
   styleUrl: './new-challenge.component.scss',
 })
-export class NewChallengeComponent {
+export class NewChallengeComponent extends FormComponent {
   private formBuilder = inject(FormBuilder);
 
   challengeForm = this.formBuilder.group({

@@ -15,10 +15,9 @@
     width: variables.$sidebar-width-expanded;
 
     ul {
-        padding-block: 1em;
         width: 100%;
+        padding-block: 1em;
         overflow: auto;
-        padding-right: 1px;
         align-self: center;
 
         li {

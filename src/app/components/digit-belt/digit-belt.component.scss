@@ -1,0 +1,24 @@
+.digit-belt {
+    .cells {
+        display: flex;
+        column-gap: 1rem;
+        overflow: auto;
+    }
+
+    .history {
+        padding-block: 0.75rem;
+        letter-spacing: 0.5rem;
+
+        span {
+            font-size: 1.5rem;
+
+            &[data-status="correct"] {
+                color: #29c129;
+            }
+
+            &[data-status="wrong"] {
+                color: #a12525;
+            }
+        }
+    }
+}

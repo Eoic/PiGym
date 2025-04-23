@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DigitCellComponent } from './digit-cell.component';
+import { DigitBeltComponent } from './digit-belt.component';
 
-describe('DigitCellComponent', () => {
-  let component: DigitCellComponent;
-  let fixture: ComponentFixture<DigitCellComponent>;
+describe('DigitBeltComponent', () => {
+  let component: DigitBeltComponent;
+  let fixture: ComponentFixture<DigitBeltComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DigitCellComponent],
+      imports: [DigitBeltComponent],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(DigitCellComponent);
+    fixture = TestBed.createComponent(DigitBeltComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
