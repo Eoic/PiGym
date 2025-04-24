@@ -1,6 +1,10 @@
 # PiGym
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
+## Features
+1. Practice mode - a user can practice with configurable practice sessions: change number of digits to guess, duration (endless or timed), starting digit.
+2. Challenge mode - a user can practice in configurable practice sessions: number of hints, starting digit, number of digits to guess, time per digit, time mode (endless or timed), mistakes allowed, etc.
+3. Statistics page shows statistics of practices and challenges completed.
+4. Scores page shows progression over time and a heatmap (red to green) of Pi digits correctly guessed in challenge mode (how many times guessed correctly and incorrectly in percent), etc.
+5. The app is offline first, and does not require authentication.
 
 ## Development server
 
@@ -51,9 +55,3 @@ For end-to-end (e2e) testing, run:
 ```bash
 ng e2e
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
