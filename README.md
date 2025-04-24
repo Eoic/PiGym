@@ -1,9 +1,9 @@
 # PiGym
 ## Features
-1. Practice mode - a user can practice with configurable practice sessions: change number of digits to guess, duration (endless or timed), starting digit.
-2. Challenge mode - a user can practice in configurable practice sessions: number of hints, starting digit, number of digits to guess, time per digit, time mode (endless or timed), mistakes allowed, etc.
-3. Statistics page shows statistics of practices and challenges completed.
-4. Scores page shows progression over time and a heatmap (red to green) of Pi digits correctly guessed in challenge mode (how many times guessed correctly and incorrectly in percent), etc.
+1. **Practice mode** - a user can practice with configurable practice sessions: change number of digits to guess, duration (endless or timed), starting digit.
+2. **Challenge mode** - a user can practice in configurable practice sessions: number of hints, starting digit, number of digits to guess, time per digit, time mode (endless or timed), mistakes allowed, etc.
+3. **Statistics** - shows statistics of practices and challenges completed.
+4. **Scores** - shows progression over time and a heatmap of Pi digits guessed in challenge mode (e.g., percentage guessed correctly / incorrectly).
 5. The app is offline first, and does not require authentication.
 
 ## Development server
