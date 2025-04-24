@@ -4,7 +4,7 @@
 2. **Challenge mode** - a user can practice in configurable practice sessions: number of hints, starting digit, number of digits to guess, time per digit, time mode (endless or timed), mistakes allowed, etc.
 3. **Statistics** - shows statistics of practices and challenges completed.
 4. **Scores** - shows progression over time and a heatmap of Pi digits guessed in challenge mode (e.g., percentage guessed correctly / incorrectly).
-5. The app is offline first, and does not require authentication.
+5. **Offline first** - the app does not require authentication and can run offline.
 
 ## Development server
 
