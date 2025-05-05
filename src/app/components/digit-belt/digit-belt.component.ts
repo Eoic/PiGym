@@ -1,9 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { Component, ElementRef, AfterViewInit, HostListener, ViewChild, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-digit-belt',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './digit-belt.component.html',
   styleUrl: './digit-belt.component.scss',
 })
