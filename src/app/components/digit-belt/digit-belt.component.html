@@ -8,16 +8,11 @@
         <span data-status="wrong">2</span>
         <span data-status="correct">6</span>
     </div>
-    <div class="cells">
-        <app-digit-cell [digit]="'5'" [status]="'correct'" />
-        <app-digit-cell [digit]="'3'" [status]="'correct'" />
-        <app-digit-cell [digit]="'5'" [status]="'wrong'" />
-        <app-digit-cell [digit]="'8'" [status]="'active'" />
-        <app-digit-cell [digit]="'9'" [status]="'default'" />
-        <app-digit-cell [digit]="'7'" />
-        <app-digit-cell [digit]="'9'" />
-        <app-digit-cell [digit]="'3'" />
-        <app-digit-cell [digit]="'2'" />
-        <app-digit-cell [digit]="'3'" />
+    <div #belt class="cells">
+        @for (item of window; track item) {
+        <div #cell class="digit-cell default">
+            <span> {{ item }} </span>
+        </div>
+        }
     </div>
 </div>

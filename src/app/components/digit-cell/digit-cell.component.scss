@@ -1,11 +1,12 @@
 .digit-cell {
     width: clamp(100px, 20vw, 260px);
     height: clamp(100px, 20vw, 260px);
+    aspect-ratio: 1 / 1;
     line-height: 1;
     display: flex;
     border-radius: 6px;
     text-align: center;
-    font-size: clamp(2rem, 10vw, 8rem);
+    font-size: clamp(2rem, 20vw, 8rem);
     background-color: #334351;
     justify-content: center;
     align-items: center;

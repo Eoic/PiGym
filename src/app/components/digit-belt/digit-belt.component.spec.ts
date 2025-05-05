@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DigitBeltComponent } from './digit-belt.component';
 
 describe('DigitBeltComponent', () => {
