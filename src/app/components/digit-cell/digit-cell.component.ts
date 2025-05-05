@@ -11,4 +11,5 @@ import { Component } from '@angular/core';
 })
 export class DigitCellComponent {
   @Input() digit: string = '?';
+  @Input() status: 'default' | 'wrong' | 'correct' | 'active' = 'default';
 }
