@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, AfterViewInit, HostListener, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, QueryList, AfterViewInit, HostListener, ViewChild, ChangeDetectorRef, AfterViewChecked, ViewChildren } from '@angular/core';
 import { PiService } from '../../pi.service';
 
 interface Digit {
+  index: number;
   symbol: string;
   answer: string;
   status: 'default' | 'wrong' | 'correct' | 'active';
@@ -15,15 +16,16 @@ interface Digit {
   templateUrl: './digit-belt.component.html',
   styleUrl: './digit-belt.component.scss',
 })
-export class DigitBeltComponent implements AfterViewInit {
-  @ViewChild('belt', { static: true, }) belt!: ElementRef<HTMLDivElement>;
-  @ViewChild('cell', { static: false, }) cell!: ElementRef<HTMLElement>;
+export class DigitBeltComponent implements AfterViewInit, AfterViewChecked {
+  @ViewChild('cellsContainer', { static: true, }) cellsContainer!: ElementRef<HTMLDivElement>;
+  @ViewChildren('cells') cells!: QueryList<ElementRef<HTMLElement>>;
 
   constructor(private cdRef: ChangeDetectorRef, private piService: PiService) {}
 
   readonly FETCH_CHUNK_SIZE = 20;
 
-  position = 0;
+  globalPosition = 0;
+  activePosition = 0;
   window: Digit[] = [];
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class DigitBeltComponent implements AfterViewInit {
           symbol: digit,
           answer: digit,
           status: 'default',
+          index: this.globalPosition + index,
         }));
       },
       error: err => {
@@ -45,12 +48,31 @@ export class DigitBeltComponent implements AfterViewInit {
     // for (let i = -this.BUFFER_CENTER; i <= this.BUFFER_CENTER; i++) 
     //   this.window.push(this.globalIndex + i);
   
-    this.cdRef.detectChanges();
+    // this.cdRef.detectChanges();
 
     // setTimeout(() => {
     // const offset = this.getCellWidth() * this.BUFFER_CENTER;
     // this.belt.nativeElement.scrollLeft = offset;
     // });
+  }
+
+  ngAfterViewChecked(): void {
+    const activeElement = this.cells.get(this.globalPosition)?.nativeElement;
+
+    if (!activeElement || !this.cellsContainer)
+      return;
+
+    const box = activeElement.getBoundingClientRect();
+    const parentBox = this.cellsContainer.nativeElement.getBoundingClientRect();
+    const relOffset = this.cellsContainer.nativeElement.parentElement!.offsetLeft;
+    const parentCenter = (parentBox.x - relOffset) + parentBox.width / 2;
+    const activeCenter = (box.x - relOffset) + box.width / 2;
+    const delta = parentCenter - activeCenter;
+
+    if (delta > 0)
+      return;
+
+    this.cellsContainer.nativeElement.style.transform = `translateX(${delta}px)`;
   }
 
   @HostListener('window:keyup', ['$event'])
@@ -62,7 +84,7 @@ export class DigitBeltComponent implements AfterViewInit {
   }
 
   private nextDigit(guess: string) {
-    const poppedDigit = this.window[this.position];
+    const poppedDigit = this.window[this.globalPosition];
 
     if (!poppedDigit)
       return;
@@ -71,12 +93,15 @@ export class DigitBeltComponent implements AfterViewInit {
       poppedDigit.status = 'wrong';
     else poppedDigit.status = 'correct';
 
-    this.position++;
+    // this.cells.get(this.globalPosition)?.nativeElement);
+
+    this.globalPosition++;
+    // console.log(this.belt.nativeElement.querySelector('.active'));
     // this.window.unshift(this.globalIndex - this.BUFFER_CENTER);
 
-    const shift = this.getCellWidth();
-    console.log(this.belt.nativeElement);
-    this.belt.nativeElement.style.left = `${-shift * this.position}px`;
+    // const shift = this.getCellWidth();
+    // this.belt.nativeElement.style.left = `${-shift * this.position}px`;
+
     // this.belt.nativeElement.scrollTo({
     //   left: this.belt.nativeElement.scrollLeft + shift,
     //   behavior: 'smooth',
@@ -84,15 +109,17 @@ export class DigitBeltComponent implements AfterViewInit {
   }
 
   private getCellWidth(): number {
-    const cell = this.cell?.nativeElement;
+    // this.cells.
+    // const cell = this.cell?.nativeElement;
 
-    if (!cell)
-      return 0;
+    // if (!cell)
+    //   return 0;
 
-    const style = getComputedStyle(cell);
-    const width = cell.offsetWidth;
-    const margin = parseFloat(style.marginLeft || '0') + parseFloat(style.marginRight || '0');
+    // const style = getComputedStyle(cell);
+    // const width = cell.offsetWidth;
+    // const margin = parseFloat(style.marginLeft || '0') + parseFloat(style.marginRight || '0');
 
-    return width + margin;
+    // return width + margin;
+    return 200;
   }
 }

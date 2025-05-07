@@ -9,9 +9,9 @@
         <span data-status="correct">6</span>
     </div>
 
-    <div #belt class="cells">
+    <div #cellsContainer class="cells">
         @for (item of window; track $index) {
-        <div #cell [ngClass]="['digit-cell', item.status]" [class.active]="$index == position">
+        <div #cells [ngClass]="['digit-cell', item.status]" [class.active]="item.index == globalPosition">
             <span> {{ item.symbol }} </span>
         </div>
         }
