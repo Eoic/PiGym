@@ -10,7 +10,7 @@
     </div>
 
     <div #cellsContainer class="cells">
-        @for (item of window; track $index) {
+        @for (item of window; track item.index) {
         <div #cells [ngClass]="['digit-cell', item.status]" [class.active]="item.index == globalPosition">
             <span> {{ item.symbol }} </span>
         </div>

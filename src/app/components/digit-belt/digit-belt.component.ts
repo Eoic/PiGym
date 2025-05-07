@@ -6,6 +6,7 @@ interface Digit {
   index: number;
   symbol: string;
   answer: string;
+  isDirty: boolean;
   status: 'default' | 'wrong' | 'correct' | 'active';
 }
 
@@ -22,26 +23,36 @@ export class DigitBeltComponent implements AfterViewInit, AfterViewChecked {
 
   constructor(private cdRef: ChangeDetectorRef, private piService: PiService) {}
 
-  readonly FETCH_CHUNK_SIZE = 20;
+  readonly DIGIT_LAG = 1;
+  readonly FETCH_CHUNK_SIZE = 5;
 
+  localPosition = 0;
   globalPosition = 0;
-  activePosition = 0;
   window: Digit[] = [];
 
-  ngOnInit() {
-    this.piService.getDigits(1, this.FETCH_CHUNK_SIZE).subscribe({
+  loadNewDigits(startDigitIndex: number, callback: () => void = () => {}) {
+    this.piService.getDigits(startDigitIndex, this.FETCH_CHUNK_SIZE).subscribe({
       next: digits => {
-        this.window = digits.split('').map((digit, index) => ({
+        const newDigits = digits.split('').map((digit, index): Digit => ({
           symbol: digit,
           answer: digit,
           status: 'default',
+          isDirty: false,
           index: this.globalPosition + index,
         }));
+
+        this.window.push(...newDigits);
+        this.cdRef.markForCheck();
+        callback();
       },
       error: err => {
         console.error('Failed to fetch Pi digits', err);
       },
     });
+  }
+
+  ngOnInit() {
+    this.loadNewDigits(1);
   }
 
   ngAfterViewInit() {
@@ -93,33 +104,9 @@ export class DigitBeltComponent implements AfterViewInit, AfterViewChecked {
       poppedDigit.status = 'wrong';
     else poppedDigit.status = 'correct';
 
-    // this.cells.get(this.globalPosition)?.nativeElement);
-
     this.globalPosition++;
-    // console.log(this.belt.nativeElement.querySelector('.active'));
-    // this.window.unshift(this.globalIndex - this.BUFFER_CENTER);
 
-    // const shift = this.getCellWidth();
-    // this.belt.nativeElement.style.left = `${-shift * this.position}px`;
-
-    // this.belt.nativeElement.scrollTo({
-    //   left: this.belt.nativeElement.scrollLeft + shift,
-    //   behavior: 'smooth',
-    // });
-  }
-
-  private getCellWidth(): number {
-    // this.cells.
-    // const cell = this.cell?.nativeElement;
-
-    // if (!cell)
-    //   return 0;
-
-    // const style = getComputedStyle(cell);
-    // const width = cell.offsetWidth;
-    // const margin = parseFloat(style.marginLeft || '0') + parseFloat(style.marginRight || '0');
-
-    // return width + margin;
-    return 200;
+    if (this.globalPosition - 1 >= this.window[this.window.length - 1].index)
+      this.loadNewDigits(this.globalPosition + 1);
   }
 }
