@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, QueryList, AfterViewInit, HostListener, ViewChild, ChangeDetectorRef, AfterViewChecked, ViewChildren } from '@angular/core';
 import { PiService } from '../../pi.service';
+import { InputService } from '../../input.service';
 
 interface Digit {
   index: number;
@@ -21,7 +22,7 @@ export class DigitBeltComponent implements AfterViewInit, AfterViewChecked {
   @ViewChild('cellsContainer', { static: true, }) cellsContainer!: ElementRef<HTMLDivElement>;
   @ViewChildren('cells') cells!: QueryList<ElementRef<HTMLElement>>;
 
-  constructor(private cdRef: ChangeDetectorRef, private piService: PiService) {}
+  constructor(private cdRef: ChangeDetectorRef, private piService: PiService, private inputService: InputService) {}
 
   readonly DIGIT_LAG = 1;
   readonly FETCH_CHUNK_SIZE = 5;
@@ -68,6 +69,10 @@ export class DigitBeltComponent implements AfterViewInit, AfterViewChecked {
   }
 
   ngAfterViewChecked(): void {
+    this.centerActiveCell();
+  }
+
+  centerActiveCell(skipTransition: boolean = false) {
     const activeElement = this.cells.get(this.globalPosition)?.nativeElement;
 
     if (!activeElement || !this.cellsContainer)
@@ -82,8 +87,26 @@ export class DigitBeltComponent implements AfterViewInit, AfterViewChecked {
 
     if (delta > 0)
       return;
+   
+    if (skipTransition)
+      this.cellsContainer.nativeElement.style.transition = 'none';
 
     this.cellsContainer.nativeElement.style.transform = `translateX(${delta}px)`;
+
+    if (skipTransition)
+      requestAnimationFrame(() => {
+        this.cellsContainer.nativeElement.style.transition = 'transform 0.2s ease-in-out';
+      });
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDownEvent(event: KeyboardEvent) {
+    if (event.key.length !== 1 || !event.key.match(/[0-9]/))
+      return;
+
+    // this.inputService.set()
+    // console.log('Key pressed:', event.key);
+    this.inputService.set(event.key, true);
   }
 
   @HostListener('window:keyup', ['$event'])
@@ -91,7 +114,17 @@ export class DigitBeltComponent implements AfterViewInit, AfterViewChecked {
     if (event.key.length !== 1 || !event.key.match(/[0-9]/))
       return;
 
+    this.inputService.set(event.key, false);
+
+    if (this.inputService.isMultipleNumberKeysPressed())
+      return;
+
     this.nextDigit(event.key);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  handleResizeEvent(_event: Event) {
+    this.centerActiveCell(true);
   }
 
   private nextDigit(guess: string) {
