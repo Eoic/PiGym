@@ -11,6 +11,12 @@ interface Digit {
   status: 'default' | 'wrong' | 'correct' | 'active';
 }
 
+// TODO:
+// - Create a buffer of indexed cells and maintain that list instead of tying 
+//   it to the fetched digits.
+// - Make digit belt flex-end, so that removing old digits wouldn't cause
+//   reflow.
+
 @Component({
   selector: 'app-digit-belt',
   standalone: true,
@@ -25,11 +31,12 @@ export class DigitBeltComponent implements AfterViewInit, AfterViewChecked {
   constructor(private cdRef: ChangeDetectorRef, private piService: PiService, private inputService: InputService) {}
 
   readonly DIGIT_LAG = 1;
-  readonly FETCH_CHUNK_SIZE = 5;
+  readonly FETCH_CHUNK_SIZE = 2;
 
   localPosition = 0;
   globalPosition = 0;
   window: Digit[] = [];
+  history: Digit[] = [];
 
   loadNewDigits(startDigitIndex: number, callback: () => void = () => {}) {
     this.piService.getDigits(startDigitIndex, this.FETCH_CHUNK_SIZE).subscribe({
@@ -104,8 +111,6 @@ export class DigitBeltComponent implements AfterViewInit, AfterViewChecked {
     if (event.key.length !== 1 || !event.key.match(/[0-9]/))
       return;
 
-    // this.inputService.set()
-    // console.log('Key pressed:', event.key);
     this.inputService.set(event.key, true);
   }
 
@@ -138,6 +143,7 @@ export class DigitBeltComponent implements AfterViewInit, AfterViewChecked {
     else poppedDigit.status = 'correct';
 
     this.globalPosition++;
+    this.history.push(poppedDigit);
 
     if (this.globalPosition - 1 >= this.window[this.window.length - 1].index)
       this.loadNewDigits(this.globalPosition + 1);
