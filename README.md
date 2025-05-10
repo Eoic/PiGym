@@ -1,3 +1,7 @@
+<a href="https://www.figma.com/design/txZGZiHops8IR4ZYxmcIML/PiGym?node-id=0-1&t=My3ANloMkPl10rVw-1">
+<img src="https://img.shields.io/badge/Figma-Design-%23c11c84.svg?logo=figma&logoColor=white">
+</a>
+
 # PiGym
 ## Features
 1. **Practice mode** - a user can practice with configurable practice sessions: change number of digits to guess, duration (endless or timed), starting digit.
