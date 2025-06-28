@@ -6,7 +6,7 @@
 2. **Challenge mode** - practice in configurable practice sessions, change number of hints, starting digit, number of digits to guess, time per digit, time mode (endless or timed), mistakes allowed, etc.
 3. **Scores** - view statistics of practices and challenges completed, accuracy per digit, etc.
 4. **Statistics** - view progression over time and a heatmap of Pi digits guessed in challenge mode (e.g., percentage guessed correctly/incorrectly).
-5. **Offline first** - the app does not require authentication and can run offline.
+5. **Offline first** - the app does not any require authentication and can run offline.
 
 ## Getting started
 
@@ -19,16 +19,16 @@
 
 1. Clone the repository
 
-```bash
-git clone git@github.com:Eoic/PiGym.git
-cd PiGym
-```
+   ```bash
+   git clone git@github.com:Eoic/PiGym.git
+   cd PiGym
+   ```
 
 2. Install dependencies
 
-```bash
-flutter pub get
-```
+   ```bash
+   flutter pub get
+   ```
 
 3. Run the application
 
@@ -50,6 +50,6 @@ flutter pub get
    Make sure desktop support is enabled by referring to Flutter desktop setup page. Then run:
 
    ```bash
-   flutter run -d windows  # or -d macos, -d linux
+   flutter run -d screens  # or -d macos, -d linux
    ```
 
