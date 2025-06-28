@@ -3,59 +3,57 @@
 </a>
 
 # PiGym
+
 ## Features
-1. **Practice mode** - a user can practice with configurable practice sessions: change number of digits to guess, duration (endless or timed), starting digit.
-2. **Challenge mode** - a user can practice in configurable practice sessions: number of hints, starting digit, number of digits to guess, time per digit, time mode (endless or timed), mistakes allowed, etc.
-3. **Statistics** - shows statistics of practices and challenges completed.
-4. **Scores** - shows progression over time and a heatmap of Pi digits guessed in challenge mode (e.g., percentage guessed correctly / incorrectly).
-5. **Offline first** - the app does not require authentication and can run offline.
 
-## Development server
+1. **Practice mode** - practice with configurable practice sessions, change number of digits to guess, duration (endless or timed), starting digit, etc.
+2. **Challenge mode** - practice in configurable practice sessions, change number of hints, starting digit, number of digits to guess, time per digit, time mode (endless or timed), mistakes allowed, etc.
+3. **Scores** - view statistics of practices and challenges completed, accuracy per digit, etc.
+4. **Statistics** - view progression over time and a heatmap of Pi digits guessed in challenge mode (e.g., percentage guessed correctly/incorrectly).
+5. **Offline first** - the app does not any require authentication and can run offline.
 
-To start a local development server, run:
+## Getting started
 
-```bash
-ng serve
-```
+### Prerequisites
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Flutter SDK:** Ensure you have [Flutter installed](https://flutter.dev/docs/get-started/install).
+- **Dart SDK:** This is included when you install Flutter.
 
-## Code scaffolding
+### Installation
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Clone the repository
 
-```bash
-ng generate component component-name
-```
+   ```bash
+   git clone git@github.com:Eoic/PiGym.git
+   cd PiGym
+   ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. Install dependencies
 
-```bash
-ng generate --help
-```
+   ```bash
+   flutter pub get
+   ```
 
-## Building
+3. Run the application
 
-To build the project run:
+   **Mobile (Android / iOS)**
+   Connect your device or start an emulator and run:
 
-```bash
-ng build
-```
+   ```bash
+   flutter run
+   ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+   **Web**
+   Run the following command to launch Papyrus in Chrome (or another supported browser):
 
-## Running unit tests
+   ```bash
+   flutter run -f chrome
+   ```
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+   **Desktop**
+   Make sure desktop support is enabled by referring to Flutter desktop setup page. Then run:
 
-```bash
-ng test
-```
+   ```bash
+   flutter run -d screens  # or -d macos, -d linux
+   ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
