@@ -1,5 +1,5 @@
-import "package:flutter/material.dart";
-import "package:flutter_svg/flutter_svg.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BrandLogo extends StatelessWidget {
   const BrandLogo({super.key});
@@ -7,7 +7,7 @@ class BrandLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final brandIcon = isDarkMode ? "assets/icons/brand-dark.svg" : "assets/icons/brand-light.svg";
+    final brandIcon = isDarkMode ? 'assets/icons/brand-dark.svg' : 'assets/icons/brand-light.svg';
 
     return Row(
       mainAxisSize: MainAxisSize.max,
@@ -18,13 +18,13 @@ class BrandLogo extends StatelessWidget {
           fit: BoxFit.contain,
           height: 64,
           width: 64,
-          semanticsLabel: "PiGym logo",
+          semanticsLabel: 'PiGym logo',
         ),
         SizedBox(width: 12),
         Text(
-          "PiGym",
+          'PiGym',
           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-            fontFamily: "MadimiOne",
+            fontFamily: 'MadimiOne',
             fontSize: 52,
           ),
         ),

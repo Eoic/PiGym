@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
 class MenuButton extends StatelessWidget {
   final String title;
@@ -17,16 +17,9 @@ class MenuButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blueAccent,
-          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          textStyle: const TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'MadimiOne',
+        style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+          padding: WidgetStateProperty.all(
+            const EdgeInsets.symmetric(horizontal: 50, vertical: 36),
           ),
         ),
         onPressed: onPressed,
@@ -34,12 +27,12 @@ class MenuButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (icon != null) ...[
-              Icon(icon, color: Colors.white, size: 38,),
+              Icon(icon, color: Colors.white, size: 38),
               const SizedBox(width: 10),
             ],
             Text(
               title,
-              style: const TextStyle(color: Colors.white),
+              style: Theme.of(context).textTheme.displayMedium,
             ),
           ],
         ),
