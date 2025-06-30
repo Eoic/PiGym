@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 class MenuButtonSpec {
   final String title;
-  final VoidCallback onPressed;
+  final Function(BuildContext) onPressed;
   final IconData icon;
 
   MenuButtonSpec({
@@ -22,14 +22,24 @@ class MenuScreen extends StatelessWidget {
     MenuButtonSpec(
       title: 'Practice',
       icon: Icons.play_circle_filled,
-      onPressed: () {},
+      onPressed: (BuildContext context) {
+        context.go('/practice');
+      },
     ),
-    MenuButtonSpec(title: 'Challenges', icon: Icons.sports, onPressed: () {}),
-    MenuButtonSpec(title: 'Scores', icon: Icons.score, onPressed: () {}),
+    MenuButtonSpec(
+      title: 'Challenges',
+      icon: Icons.sports,
+      onPressed: (BuildContext context) {},
+    ),
+    MenuButtonSpec(
+      title: 'Scores',
+      icon: Icons.score,
+      onPressed: (BuildContext context) {},
+    ),
     MenuButtonSpec(
       title: 'Statistics',
       icon: Icons.bar_chart,
-      onPressed: () {},
+      onPressed: (BuildContext context) {},
     ),
   ];
 
@@ -56,7 +66,8 @@ class MenuScreen extends StatelessWidget {
                                   MenuButton(
                                     icon: item.icon,
                                     title: item.title,
-                                    onPressed: item.onPressed,
+                                    onPressed:
+                                        () => item.onPressed(context),
                                   ),
                                   if (_menuItems.last != item)
                                     const SizedBox(height: 32),
