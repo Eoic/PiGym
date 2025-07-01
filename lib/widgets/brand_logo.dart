@@ -23,7 +23,7 @@ class BrandLogo extends StatelessWidget {
         SizedBox(width: 12),
         Text(
           'PiGym',
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+          style: Theme.of(context).textTheme.headlineLarge!.copyWith(
             fontFamily: 'MadimiOne',
             fontSize: 52,
           ),

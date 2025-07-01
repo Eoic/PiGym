@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+const iconsRoot = 'assets/icons/menu';
 
 class MenuButton extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
-  final IconData? icon;
+  final String icon;
 
   const MenuButton({
     super.key,
     required this.title,
     required this.onPressed,
-    this.icon,
+    required this.icon,
   });
 
   @override
@@ -19,21 +22,32 @@ class MenuButton extends StatelessWidget {
       child: ElevatedButton(
         style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
           padding: WidgetStateProperty.all(
-            const EdgeInsets.symmetric(horizontal: 50, vertical: 36),
+            const EdgeInsets.symmetric(horizontal: 0, vertical: 30),
           ),
         ),
         onPressed: onPressed,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (icon != null) ...[
-              Icon(icon, color: Colors.white, size: 38),
+            ...[
+              SvgPicture.asset(
+                '$iconsRoot/$icon.svg',
+                fit: BoxFit.contain,
+                height: 60,
+                width: 60,
+                semanticsLabel: title,
+              ),
+              SizedBox(width: 14),
+              Text(
+                title,
+                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                  fontFamily: 'MadimiOne',
+                  fontSize: 52,
+                ),
+              ),
               const SizedBox(width: 10),
             ],
-            Text(
-              title,
-              style: Theme.of(context).textTheme.displayMedium,
-            ),
+            // Text(title, style: Theme.of(context).textTheme.displayMedium),
           ],
         ),
       ),
