@@ -27,9 +27,11 @@ class MenuScreen extends StatelessWidget {
       },
     ),
     MenuButtonSpec(
-      title: 'Challenges',
+      title: 'Challenge',
       icon: 'challenge',
-      onPressed: (BuildContext context) {},
+      onPressed: (BuildContext context) {
+        context.go('/challenge-form');
+      },
     ),
     MenuButtonSpec(
       title: 'Scores',

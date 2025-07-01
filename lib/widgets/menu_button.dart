@@ -40,14 +40,9 @@ class MenuButton extends StatelessWidget {
               SizedBox(width: 14),
               Text(
                 title,
-                style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                  fontFamily: 'MadimiOne',
-                  fontSize: 52,
-                ),
+                style: Theme.of(context).textTheme.displayMedium,
               ),
-              const SizedBox(width: 10),
             ],
-            // Text(title, style: Theme.of(context).textTheme.displayMedium),
           ],
         ),
       ),
