@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pigym/screens/challenge_form_screen.dart';
+import 'package:pigym/dto/challenge_config.dart';
 
 class ChallengeScreen extends StatelessWidget {
-  const ChallengeScreen({super.key});
+  final ChallengeConfig config;
+
+  const ChallengeScreen({super.key, required this.config});
 
   @override
   Widget build(BuildContext context) {
