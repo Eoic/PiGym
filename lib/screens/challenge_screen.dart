@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pigym/dto/challenge_config.dart';
+import 'package:pigym/screens/demo_screen.dart';
 
 class ChallengeScreen extends StatelessWidget {
   final ChallengeConfig config;
@@ -8,9 +9,10 @@ class ChallengeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Challenge')),
-      body: Center(child: const Text('Challenge')),
-    );
+    // return Scaffold(
+    //   appBar: AppBar(title: const Text('Challenge')),
+    //   body: Center(child: const Text('Challenge')),
+    // );
+    return CodeEntryScreen();
   }
 }
