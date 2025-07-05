@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pigym/data/pi.dart';
 
-const double _kItemSize = 125.0;
+late double _kItemSize;
+late double _kItemHorizontalMargin;
+const double _kItemMarginPercent = 0.12;
 const double _kFocusedScale = 1.0;
 const double _kUnfocusedScale = 1.0;
-const double _kItemHorizontalMargin = 8.0;
 const int _kAnimationDurationMillis = 250;
 
 typedef CustomBuilder =
@@ -20,33 +21,45 @@ class DigitsBelt extends StatefulWidget {
 
 class _DigitsBeltState extends State<DigitsBelt> {
   int _currentIndex = 2;
-  late final ScrollController _scrollController;
+  ScrollController? _scrollController;
+  bool _isInitialized = false;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController(
-      initialScrollOffset: _currentIndex * _kItemSize + 2 * _kItemHorizontalMargin * (_currentIndex + 1),
-    );
+  }
+
+  void _initializeValues(BuildContext context) {
+    if (!_isInitialized) {
+      final double realWidth = MediaQuery.of(context).size.width;
+      _kItemSize = (realWidth - (realWidth * _kItemMarginPercent)) / 3;
+      _kItemHorizontalMargin = (realWidth - _kItemSize * 3) / 6;
+
+      _scrollController = ScrollController(
+        initialScrollOffset: _currentIndex * _kItemSize +
+            _kItemHorizontalMargin *
+                2 *
+                (_currentIndex + 1),
+      );
+      _isInitialized = true;
+    }
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    _scrollController?.dispose();
     super.dispose();
   }
 
   void validateAndAdvance(String digit) {
     if (digit == pi[_currentIndex]) {
 
-      // TODO: Do not calculate length each time.
-      if (_currentIndex < pi.length - 1) {
+      if (_currentIndex < piLength - 1) {
         setState(() {
           _currentIndex++;
         });
 
-        _scrollController.animateTo(
-          // Pushes the belt to the left by item size * index.
+        _scrollController!.animateTo(
           _currentIndex * _kItemSize + _kItemHorizontalMargin * 2 * (_currentIndex + 1),
           duration: const Duration(milliseconds: _kAnimationDurationMillis),
           curve: Curves.easeInOut,
@@ -71,6 +84,11 @@ class _DigitsBeltState extends State<DigitsBelt> {
   @override
   Widget build(BuildContext context) {
     widget.builder.call(context, handleKeyPressed);
+    _initializeValues(context);
+
+    if (!_isInitialized || _scrollController == null) {
+      return const Center(child: CircularProgressIndicator());
+    }
 
     final double horizontalPadding =
         (MediaQuery.of(context).size.width - _kItemSize) / 2 + _kItemHorizontalMargin;
@@ -82,20 +100,14 @@ class _DigitsBeltState extends State<DigitsBelt> {
         scrollDirection: Axis.horizontal,
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-        // TODO: Calculate length in advance.
-        itemCount: pi.length,
+        itemCount: piLength,
         itemBuilder: (context, index) {
           final bool isFocused = index == _currentIndex;
-
           return AnimatedContainer(
             duration: const Duration(milliseconds: _kAnimationDurationMillis),
             curve: Curves.easeInOut,
-            width: _kItemSize,
-            margin: const EdgeInsets.symmetric(horizontal: _kItemHorizontalMargin),
-            // margin: const EdgeInsets.symmetric(horizontal: 4.0),
-            transform:
-                Matrix4.identity()
-                  ..scale(isFocused ? _kFocusedScale : _kUnfocusedScale),
+            width: _kItemSize * (isFocused ? _kFocusedScale : _kUnfocusedScale),
+            margin: EdgeInsets.symmetric(horizontal: _kItemHorizontalMargin),
             transformAlignment: Alignment.center,
             decoration: BoxDecoration(
               color:
@@ -105,12 +117,16 @@ class _DigitsBeltState extends State<DigitsBelt> {
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Center(
-              child: Text(
-                pi[index],
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.8),
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
+              child: Transform.scale(
+                scale: isFocused ? _kFocusedScale : _kUnfocusedScale,
+                child: Text(
+                  pi[index],
+                  style: TextStyle(
+                    color: Colors.white.withAlpha(204),
+                    fontSize: 52,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'MadimiOne',
+                  ),
                 ),
               ),
             ),
