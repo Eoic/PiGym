@@ -10,10 +10,9 @@ class CodeEntryScreen extends StatefulWidget {
 }
 
 class _CodeEntryScreenState extends State<CodeEntryScreen> {
-  final List<int?> _codeToEnter = [3, null, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7];
-  late void Function(int) _handleKeyPressed;
+  late void Function(String) _handleKeyPressed;
 
-  void _onKeyPressed(int digit) {
+  void _onKeyPressed(String digit) {
     _handleKeyPressed.call(digit);
   }
 
@@ -31,9 +30,8 @@ class _CodeEntryScreenState extends State<CodeEntryScreen> {
         children: <Widget>[
           const Spacer(),
           DigitsBelt(
-            digits: _codeToEnter,
             builder:
-                (BuildContext context, void Function(int) handleKeyPressed) =>
+                (BuildContext context, void Function(String) handleKeyPressed) =>
                     _handleKeyPressed = handleKeyPressed,
           ),
           const Spacer(),

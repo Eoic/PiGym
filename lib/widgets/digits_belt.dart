@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pigym/data/pi.dart';
 
 const double _kItemSize = 125.0;
 const double _kFocusedScale = 1.0;
@@ -7,12 +8,11 @@ const double _kItemHorizontalMargin = 8.0;
 const int _kAnimationDurationMillis = 250;
 
 typedef CustomBuilder =
-    void Function(BuildContext context, Function(int) handleKeyPress);
+    void Function(BuildContext context, Function(String) handleKeyPress);
 
 class DigitsBelt extends StatefulWidget {
-  final List<int?> digits;
   final CustomBuilder builder;
-  const DigitsBelt({super.key, required this.builder, required this.digits});
+  const DigitsBelt({super.key, required this.builder });
 
   @override
   State<DigitsBelt> createState() => _DigitsBeltState();
@@ -36,9 +36,11 @@ class _DigitsBeltState extends State<DigitsBelt> {
     super.dispose();
   }
 
-  void validateAndAdvance(int digit) {
-    if (digit == widget.digits[_currentIndex]) {
-      if (_currentIndex < widget.digits.length - 1) {
+  void validateAndAdvance(String digit) {
+    if (digit == pi[_currentIndex]) {
+
+      // TODO: Do not calculate length each time.
+      if (_currentIndex < pi.length - 1) {
         setState(() {
           _currentIndex++;
         });
@@ -62,7 +64,7 @@ class _DigitsBeltState extends State<DigitsBelt> {
     }
   }
 
-  void handleKeyPressed(int digit) {
+  void handleKeyPressed(String digit) {
     validateAndAdvance(digit);
   }
 
@@ -80,7 +82,8 @@ class _DigitsBeltState extends State<DigitsBelt> {
         scrollDirection: Axis.horizontal,
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-        itemCount: widget.digits.length,
+        // TODO: Calculate length in advance.
+        itemCount: pi.length,
         itemBuilder: (context, index) {
           final bool isFocused = index == _currentIndex;
 
@@ -103,7 +106,7 @@ class _DigitsBeltState extends State<DigitsBelt> {
             ),
             child: Center(
               child: Text(
-                widget.digits[index] == null ? '.' : widget.digits[index]!.toString(),
+                pi[index],
                 style: TextStyle(
                   color: Colors.white.withValues(alpha: 0.8),
                   fontSize: 40,

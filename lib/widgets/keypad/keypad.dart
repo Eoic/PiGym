@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pigym/widgets/keypad/keypad_button.dart';
 
 class Keypad extends StatelessWidget {
-  final ValueChanged<int> onKeyPressed;
+  final ValueChanged<String> onKeyPressed;
 
   const Keypad({super.key, required this.onKeyPressed});
 
@@ -28,11 +28,11 @@ class Keypad extends StatelessWidget {
 
               return KeypadButton(
                 text: digit.toString(),
-                onPressed: () => onKeyPressed(digit),
+                onPressed: () => onKeyPressed(digit.toString()),
               );
             },
           ),
-          KeypadButton(text: '0', onPressed: () => onKeyPressed(0)),
+          KeypadButton(text: '0', onPressed: () => onKeyPressed('0')),
         ],
       ),
     );
