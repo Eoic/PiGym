@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pigym/data/guess.dart';
 import 'package:pigym/data/pi.dart';
 
 late double _kItemSize;
 late double _kItemHorizontalMargin;
+const int _kItemCount = 6;
 const double _kItemMarginPercent = 0.12;
 const double _kFocusedScale = 1.0;
 const double _kUnfocusedScale = 1.0;
@@ -13,7 +15,7 @@ typedef CustomBuilder =
 
 class DigitsBelt extends StatefulWidget {
   final CustomBuilder builder;
-  const DigitsBelt({super.key, required this.builder });
+  const DigitsBelt({super.key, required this.builder});
 
   @override
   State<DigitsBelt> createState() => _DigitsBeltState();
@@ -21,28 +23,13 @@ class DigitsBelt extends StatefulWidget {
 
 class _DigitsBeltState extends State<DigitsBelt> {
   int _currentIndex = 2;
-  ScrollController? _scrollController;
   bool _isInitialized = false;
+  ScrollController? _scrollController;
+  final List<Guess> _guesses = [];
 
   @override
   void initState() {
     super.initState();
-  }
-
-  void _initializeValues(BuildContext context) {
-    if (!_isInitialized) {
-      final double realWidth = MediaQuery.of(context).size.width;
-      _kItemSize = (realWidth - (realWidth * _kItemMarginPercent)) / 3;
-      _kItemHorizontalMargin = (realWidth - _kItemSize * 3) / 6;
-
-      _scrollController = ScrollController(
-        initialScrollOffset: _currentIndex * _kItemSize +
-            _kItemHorizontalMargin *
-                2 *
-                (_currentIndex + 1),
-      );
-      _isInitialized = true;
-    }
   }
 
   @override
@@ -53,32 +40,48 @@ class _DigitsBeltState extends State<DigitsBelt> {
 
   void validateAndAdvance(String digit) {
     if (digit == pi[_currentIndex]) {
-
       if (_currentIndex < piLength - 1) {
         setState(() {
           _currentIndex++;
+          _guesses.add(Guess(digit: digit, isCorrect: true));
         });
 
         _scrollController!.animateTo(
-          _currentIndex * _kItemSize + _kItemHorizontalMargin * 2 * (_currentIndex + 1),
+          _getOffset(),
           duration: const Duration(milliseconds: _kAnimationDurationMillis),
           curve: Curves.easeInOut,
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Done!'),
-            backgroundColor: Colors.green,
-          ),
+          const SnackBar(content: Text('Done!'), backgroundColor: Colors.green),
         );
       }
     } else {
-      //   TODO: Handle incorrect press.
+      setState(() {
+        _guesses.add(Guess(digit: digit, isCorrect: false));
+      });
     }
   }
 
   void handleKeyPressed(String digit) {
     validateAndAdvance(digit);
+  }
+
+  void _initializeValues(BuildContext context) {
+    if (!_isInitialized) {
+      final double realWidth = MediaQuery.of(context).size.width;
+      _kItemSize =
+          (realWidth - (realWidth * _kItemMarginPercent)) / _kItemCount;
+      _kItemHorizontalMargin =
+          (realWidth - _kItemSize * _kItemCount) / (2 * _kItemCount);
+      _scrollController = ScrollController(initialScrollOffset: _getOffset());
+      _isInitialized = true;
+    }
+  }
+
+  double _getOffset() {
+    return _currentIndex * _kItemSize +
+        _kItemHorizontalMargin * 2 * (_currentIndex + 1);
   }
 
   @override
@@ -91,7 +94,8 @@ class _DigitsBeltState extends State<DigitsBelt> {
     }
 
     final double horizontalPadding =
-        (MediaQuery.of(context).size.width - _kItemSize) / 2 + _kItemHorizontalMargin;
+        (MediaQuery.of(context).size.width - _kItemSize) / 2 +
+        _kItemHorizontalMargin;
 
     return SizedBox(
       height: _kItemSize * _kFocusedScale,
@@ -122,7 +126,7 @@ class _DigitsBeltState extends State<DigitsBelt> {
                 child: Text(
                   pi[index],
                   style: TextStyle(
-                    color: Colors.white.withAlpha(204),
+                    color: Colors.white.withAlpha(150),
                     fontSize: 52,
                     fontWeight: FontWeight.w400,
                     fontFamily: 'MadimiOne',
