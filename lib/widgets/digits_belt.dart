@@ -47,12 +47,8 @@ class _DigitsBeltState extends State<DigitsBelt> {
       return;
     }
 
-    setState(() {
-      _currentIndex++;
-      widget.addGuess(
-        Guess(digit: digit, isCorrect: digit == pi[_currentIndex]),
-      );
-    });
+    widget.addGuess(Guess(digit: digit, isCorrect: digit == pi[_currentIndex]));
+    setState(() => _currentIndex++);
 
     _scrollController!.animateTo(
       _getOffset(),
