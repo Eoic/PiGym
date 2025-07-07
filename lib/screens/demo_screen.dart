@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:pigym/data/guess.dart';
+import 'package:pigym/widgets/digits_history.dart';
 import 'package:pigym/widgets/keypad/keypad.dart';
 import 'package:pigym/widgets/digits_belt.dart';
 
-class CodeEntryScreen extends StatefulWidget {
-  const CodeEntryScreen({super.key});
+class DemoScreen extends StatefulWidget {
+  const DemoScreen({super.key});
 
   @override
-  State<CodeEntryScreen> createState() => _CodeEntryScreenState();
+  State<DemoScreen> createState() => _DemoScreenState();
 }
 
-class _CodeEntryScreenState extends State<CodeEntryScreen> {
+class _DemoScreenState extends State<DemoScreen> {
+  final List<Guess> _guesses = [];
   late void Function(String) _handleKeyPressed;
 
   void _onKeyPressed(String digit) {
     _handleKeyPressed.call(digit);
+  }
+
+  void _addGuess(Guess guess) {
+    setState(() {
+      _guesses.add(guess);
+    });
   }
 
   @override
@@ -33,7 +42,10 @@ class _CodeEntryScreenState extends State<CodeEntryScreen> {
             builder:
                 (BuildContext context, void Function(String) handleKeyPressed) =>
                     _handleKeyPressed = handleKeyPressed,
+            addGuess: _addGuess,
           ),
+          const Spacer(),
+          DigitsHistory(digits: _guesses),
           const Spacer(),
           Keypad(onKeyPressed: _onKeyPressed),
           const SizedBox(height: 20),

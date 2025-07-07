@@ -4,7 +4,7 @@ import 'package:pigym/data/pi.dart';
 
 late double _kItemSize;
 late double _kItemHorizontalMargin;
-const int _kItemCount = 6;
+const int _kItemCount = 3;
 const double _kItemMarginPercent = 0.12;
 const double _kFocusedScale = 1.0;
 const double _kUnfocusedScale = 1.0;
@@ -15,7 +15,8 @@ typedef CustomBuilder =
 
 class DigitsBelt extends StatefulWidget {
   final CustomBuilder builder;
-  const DigitsBelt({super.key, required this.builder});
+  final Function(Guess) addGuess;
+  const DigitsBelt({super.key, required this.builder, required this.addGuess});
 
   @override
   State<DigitsBelt> createState() => _DigitsBeltState();
@@ -25,7 +26,6 @@ class _DigitsBeltState extends State<DigitsBelt> {
   int _currentIndex = 2;
   bool _isInitialized = false;
   ScrollController? _scrollController;
-  final List<Guess> _guesses = [];
 
   @override
   void initState() {
@@ -38,33 +38,31 @@ class _DigitsBeltState extends State<DigitsBelt> {
     super.dispose();
   }
 
-  void validateAndAdvance(String digit) {
-    if (digit == pi[_currentIndex]) {
-      if (_currentIndex < piLength - 1) {
-        setState(() {
-          _currentIndex++;
-          _guesses.add(Guess(digit: digit, isCorrect: true));
-        });
+  void handleDigitInput(String digit) {
+    if (_currentIndex >= piLength) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Done!'), backgroundColor: Colors.green),
+      );
 
-        _scrollController!.animateTo(
-          _getOffset(),
-          duration: const Duration(milliseconds: _kAnimationDurationMillis),
-          curve: Curves.easeInOut,
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Done!'), backgroundColor: Colors.green),
-        );
-      }
-    } else {
-      setState(() {
-        _guesses.add(Guess(digit: digit, isCorrect: false));
-      });
+      return;
     }
+
+    setState(() {
+      _currentIndex++;
+      widget.addGuess(
+        Guess(digit: digit, isCorrect: digit == pi[_currentIndex]),
+      );
+    });
+
+    _scrollController!.animateTo(
+      _getOffset(),
+      duration: const Duration(milliseconds: _kAnimationDurationMillis),
+      curve: Curves.easeInOut,
+    );
   }
 
   void handleKeyPressed(String digit) {
-    validateAndAdvance(digit);
+    handleDigitInput(digit);
   }
 
   void _initializeValues(BuildContext context) {

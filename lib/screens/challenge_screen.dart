@@ -13,6 +13,6 @@ class ChallengeScreen extends StatelessWidget {
     //   appBar: AppBar(title: const Text('Challenge')),
     //   body: Center(child: const Text('Challenge')),
     // );
-    return CodeEntryScreen();
+    return DemoScreen();
   }
 }
