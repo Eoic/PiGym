@@ -82,8 +82,8 @@ class MenuScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 16.0,
-              right: 16.0,
+              bottom: 32.0,
+              right: 32.0,
               child: FloatingActionButton(
                 onPressed: () {
                   context.go('/settings');
