@@ -44,12 +44,8 @@ class _DigitsHistoryState extends State<DigitsHistory> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(8.0),
-      ),
       child: Align(
         alignment: Alignment.centerRight,
         child: ListView.builder(

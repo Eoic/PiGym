@@ -99,7 +99,6 @@ class _ChallengeFormScreenState extends State<ChallengeFormScreen> {
                   hint: 'Leave blank for endless digits',
                 ),
                 const SizedBox(height: 40),
-            
                 Row(
                   children: [
                     Expanded(
